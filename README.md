@@ -32,27 +32,26 @@ This creates the node_modules folder and installs the project dependencies in th
 #### Running the application with docker-compose
 Just run docker-compose up
 
-#### Running the application with docker-compose
-
-Run both dev-client and dev-server:
+#### Running the application without docker
 
 - The dev-client is a webpack-dev-server which serves the react/redux bundle.js
 
-
 Change the proxy option in the [webpack.config.dev.js](./client/webpack.config.dev.js)
 ```
-    proxy: {
-      '/api': 'http://localhost:3000',
-    },
+proxy: {
+  '/api': 'http://localhost:3000',
+},
 ```
+
+Run the dev client:
+```bash
+npm run dev
+```
+
+- The dev-server hosts the backend rest API and manages the database.
 
 Run the dev server:
 ```bash
 npm run dev
-```
-- The dev-server hosts the backend rest API and manages the database.
-
-```bash
-npm run dev-server
 ```
 The site can be viewed locally at localhost:8080.
