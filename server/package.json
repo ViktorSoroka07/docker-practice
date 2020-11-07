@@ -1,13 +1,12 @@
 {
-  "name": "react-redux-express-todo",
+  "name": "docker-practice-server",
   "version": "1.0.0",
-  "description": "##Stack",
+  "description": "Server side as a part of the project to try out docker and docker-compose",
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon",
     "start": "node index.js"
   },
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",

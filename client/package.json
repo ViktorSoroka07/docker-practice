@@ -1,13 +1,12 @@
 {
-  "name": "client",
+  "name": "docker-practice-client",
   "version": "1.0.0",
-  "description": "##Stack",
+  "description": "Client side as a part of the project to try out docker and docker-compose",
   "main": "src/index.js",
   "scripts": {
     "dev": "webpack-dev-server --disable-host-check --config=webpack.config.dev.js",
     "build": "webpack --config=webpack.config.prod.js"
   },
-  "author": "",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.12.3",
