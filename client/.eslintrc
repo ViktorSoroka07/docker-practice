@@ -1,0 +1,221 @@
+{
+  "globals": {
+    "process": true
+  },
+  "env": {
+    "browser": true
+  },
+  "extends": [
+    "airbnb-base",
+    "airbnb/rules/react"
+  ],
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": false,
+    "ecmaFeatures": {
+      "globalReturn": false
+    },
+    "babelOptions": {
+      "configFile": "./.babelrc"
+    }
+  },
+  "plugins": [
+    "react"
+  ],
+  "root": true,
+  "rules": {
+    "key-spacing": [
+      "error",
+      {
+        "beforeColon": false
+      }
+    ],
+    "import/no-extraneous-dependencies": "off",
+    "import/prefer-default-export": "off",
+    "padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "always",
+        "prev": [
+          "const",
+          "let"
+        ],
+        "next": "*"
+      },
+      {
+        "blankLine": "any",
+        "prev": [
+          "const",
+          "let"
+        ],
+        "next": [
+          "const",
+          "let"
+        ]
+      },
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": [
+          "return"
+        ]
+      }
+    ],
+    "semi": "error",
+    "object-curly-newline": "error",
+    "object-property-newline": "error",
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1,
+        "maxEOF": 0,
+        "maxBOF": 0
+      }
+    ],
+    "no-void": "off",
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ],
+    "quote-props": [
+      "error",
+      "as-needed"
+    ],
+    "no-use-before-define": "off",
+    "prefer-template": "error",
+    "no-else-return": "error",
+    "newline-per-chained-call": "error",
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "prefer-object-spread": "off",
+    "no-console": [
+      "error",
+      {
+        "allow": [
+          "warn",
+          "error"
+        ]
+      }
+    ],
+    "react/prop-types": [
+      "error",
+      {
+        "skipUndeclared": true
+      }
+    ],
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-wrap-multilines": [
+      "error"
+    ],
+    "react/jsx-max-props-per-line": [
+      "error",
+      {
+        "maximum": 1,
+        "when": "always"
+      }
+    ],
+    "react/jsx-sort-props": [
+      1,
+      {
+        "noSortAlphabetically": true,
+        "ignoreCase": true,
+        "callbacksLast": true,
+        "shorthandLast": false,
+        "reservedFirst": false
+      }
+    ],
+    "react/jsx-no-useless-fragment": "error",
+    "arrow-body-style": "off",
+    "camelcase": [
+      "error",
+      {
+        "properties": "never",
+        "allow": [
+          "^UNSAFE_"
+        ]
+      }
+    ],
+    "class-methods-use-this": "off",
+    "function-paren-newline": [
+      "error",
+      "consistent"
+    ],
+    "lines-between-class-members": [
+      "error",
+      "always",
+      {
+        "exceptAfterSingleLine": true
+      }
+    ],
+    "max-len": "off",
+    "no-multi-spaces": [
+      "error",
+      {
+        "ignoreEOLComments": true
+      }
+    ],
+    "no-nested-ternary": "off",
+    "no-param-reassign": [
+      "error",
+      {
+        "props": false
+      }
+    ],
+    "no-plusplus": "off",
+    "no-restricted-syntax": [
+      "error",
+      "LabeledStatement",
+      "WithStatement"
+    ],
+    "no-underscore-dangle": "off",
+    "no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "operator-linebreak": [
+      "off"
+    ],
+    "prefer-destructuring": "off",
+    "react/destructuring-assignment": [
+      "off"
+    ],
+    "react/forbid-prop-types": [
+      "warn",
+      {
+        "forbid": [
+          "any",
+          "array"
+        ]
+      }
+    ],
+    "react/jsx-curly-newline": "off",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/no-array-index-key": "off",
+    "react/prefer-stateless-function": "off",
+    "react/require-default-props": "off",
+    "react/sort-comp": [
+      "warn",
+      {
+        "order": [
+          "static-methods",
+          "static-variables",
+          "lifecycle",
+          "everything-else",
+          "render"
+        ]
+      }
+    ],
+    "react/state-in-constructor": "off",
+    "react/static-property-placement": "off"
+  }
+}

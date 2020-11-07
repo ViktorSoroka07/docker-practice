@@ -1,10 +1,35 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const ShowTodoItem = ({onRemove = f => f, onEdit = f => f, title}) =>
+export const ShowTodoItem = ({
+  title,
+  onRemove,
+  onEdit,
+}) => (
   <div className="todo-item">
-    <div onClick={onEdit} className="todo-title">{title}</div>
-    <div onClick={onRemove} className="todo-rm-btn">X</div>
-    <div onClick={onEdit} className="todo-edit-btn start">✎</div>
+    <div
+      className="todo-title"
+      onClick={onEdit}
+    >
+      {title}
+    </div>
+    <div
+      className="todo-rm-btn"
+      onClick={onRemove}
+    >
+      X
+    </div>
+    <div
+      className="todo-edit-btn start"
+      onClick={onEdit}
+    >
+      ✎
+    </div>
   </div>
+);
 
-export default ShowTodoItem
+ShowTodoItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  onRemove: PropTypes.func.isRequired,
+  onEdit: PropTypes.func.isRequired,
+};
