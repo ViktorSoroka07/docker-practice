@@ -30,7 +30,8 @@ npm install
 This creates the node_modules folder and installs the project dependencies in the folder.
 
 #### Running the application with docker-compose
-Just run docker-compose up
+- dev: run `docker-compose -f ./docker-compose.dev.yml up --build`
+- prod: run `docker-compose up --build`
 
 #### Running the application without docker
 

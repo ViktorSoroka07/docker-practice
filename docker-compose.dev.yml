@@ -2,22 +2,28 @@ version: "3"
 services:
   api:
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       context: ./server
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root_password
       MONGO_INITDB_DATABASE: todo_db
       MONGOLAB_URI: "mongodb://root:root_password@mongodb:27017/todo_db?authSource=admin"
+    volumes:
+      - /app/node_modules
+      - ./server:/app
     depends_on:
       - mongodb
 
   client:
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       context: ./client
     ports:
       - 8080:8080
+    volumes:
+      - /app/node_modules
+      - ./client:/app
     depends_on:
       - api
 
