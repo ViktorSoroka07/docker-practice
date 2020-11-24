@@ -30,8 +30,8 @@ npm install
 This creates the node_modules folder and installs the project dependencies in the folder.
 
 #### Running the application with docker-compose
-- dev: run `docker-compose -f ./docker-compose.dev.yml up --build`
-- prod: run `docker-compose up --build`
+- dev: run `docker-compose -f ./docker-compose.dev.yml up --build`. The app will be available on [http://localhost:8080](http://localhost:8080).
+- prod: run `docker-compose up --build`. Production version uses https connection. In order for it to be set up, add `localhost.crt` certificate to certificate registry on your machine and make sure it is trusted. The app will be available on [https://localhost](https://localhost).
 
 #### Running the application without docker
 

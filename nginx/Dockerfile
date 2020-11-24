@@ -1,4 +1,7 @@
 FROM nginx:1.17.6
-EXPOSE 8080
-COPY ./default.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+EXPOSE 443
+COPY ./localhost.crt /etc/ssl/certs/localhost.crt
+COPY ./localhost.key /etc/ssl/private/localhost.key
 COPY ./gzip.conf /etc/nginx/conf.d/gzip.conf
+COPY ./default.conf /etc/nginx/conf.d/default.conf
