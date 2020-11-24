@@ -17,9 +17,20 @@ services:
       dockerfile: Dockerfile
       context: ./client
     ports:
+      - 8000:8000
+    depends_on:
+      - api
+
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
       - 8080:8080
     depends_on:
       - api
+      - client
 
   mongodb:
     image: mongo:3.4
