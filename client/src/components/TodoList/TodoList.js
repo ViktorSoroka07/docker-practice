@@ -5,8 +5,8 @@ import React, {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { ShowTodoItem } from './ShowTodoItem';
-import { EditTodoItem } from './EditTodoItem';
+import { ShowTodoItem } from '../ShowTodoItem';
+import { EditTodoItem } from '../EditTodoItem';
 import {
   removeTodoAction,
   updateTodoAction,
@@ -21,10 +21,16 @@ const TodoListComponent = ({
 
   const handleRemove = useCallback(id => {
     removeTodo(id);
-    fetch(`/api/todos/${id}`, { method: 'DELETE' }).then(response => response.json());
+    fetch(`/api/todos/${id}`, { method: 'DELETE' });
   }, []);
 
-  const handleEditComplete = useCallback(updatedTitle => {
+  const handleEditComplete = useCallback((prevTitle, updatedTitle) => {
+    if (prevTitle === updatedTitle) {
+      setCurrentlyEditedId(null);
+
+      return;
+    }
+
     const updatedTodo = {
       id: currentlyEditedId,
       title: updatedTitle,
@@ -35,7 +41,7 @@ const TodoListComponent = ({
       method: 'PUT',
       body: JSON.stringify(updatedTodo),
       headers: { 'Content-Type': 'application/json' },
-    }).then(response => response.json());
+    });
     setCurrentlyEditedId(null);
   }, [currentlyEditedId]);
 

@@ -1,73 +1,69 @@
 @import url('https://fonts.googleapis.com/css?family=Abel');
 
 body {
-    font-family: 'Abel', serif;
-    font-size: 20px;
-    background: whitesmoke;
-    color: white;
+  font-family: 'Abel', serif;
+  font-size: 20px;
+  background: whitesmoke;
+  color: white;
 }
 
 input, select, textarea, button {
-    font-family: 'Abel', serif;
-    font-size: 20px;
-    color: #333;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-}
-
-.todo-add-form input {
-    height: 35px;
-    width: 340px;
-    padding: 3px 10px;
-    margin: auto;
-    margin-bottom: 10px;
-    display: block;
+  font-family: 'Abel', serif;
+  font-size: 20px;
+  color: #333;
+  border-radius: 4px;
+  border: 1px solid #ccc;
 }
 
 .todo-add-form button {
-    height: 45px;
-    width: 360px;
-    margin: auto;
-    padding: 5px;
-    display: block;
+  display: block;
+  width: 360px;
+  height: 45px;
+  margin: auto;
+  padding: 5px;
+}
+
+.todo-add-form input {
+  display: block;
+  width: 340px;
+  height: 35px;
+  margin: auto auto 10px;
+  padding: 3px 10px;
 }
 
 .todo-edit-btn {
-    color: #83d694;
-    margin-right: 20px;
-    float: right;
+  color: #83d694;
 }
 
 .todo-edit-btn.start {
-    color: white;
+  color: white;
 }
 
 .todo-rm-btn {
-    color: white;
-    float: right;
+  margin-left: 20px;
+  color: white;
 }
 
 .todo-item {
-    margin: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    height: 45px;
-    width: 360px;
-    background: gray;
-    padding: 10px;
-    display: block;
-    border-radius: 3px;
-    box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  width: 360px;
+  height: 45px;
+  margin: 10px auto;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  background: gray;
+}
+
+.todo-item button {
+  background: #425458;
 }
 
 .todo-item.edit {
-    padding-top: 7px;
-}
-
-.todo-item.edit div {
-    padding-top: 3px;
+  padding-top: 7px;
 }
 
 .todo-title {
-    display: inline;
+  display: inline;
 }

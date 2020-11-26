@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { setTodosAction } from '../../redux/actions';
-import { AddTodoForm } from './AddTodoForm';
-import { TodoList } from './TodoList';
+import { AddTodoForm } from '../AddTodoForm';
+import { TodoList } from '../TodoList';
 
 const TodoListAppComponent = ({ setTodos }) => {
   useEffect(() => {

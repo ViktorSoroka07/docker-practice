@@ -21,17 +21,19 @@ export const EditTodoItem = ({
         }}
         onChange={e => setTodoTitle(e.target.value)}
       />
-      <div
-        className="todo-rm-btn"
-        onClick={onRemove}
-      >
-        X
-      </div>
-      <div
-        className="todo-edit-btn"
-        onClick={() => onEdit(todoTitle)}
-      >
-        ✓
+      <div>
+        <button
+          className="todo-edit-btn"
+          onClick={() => onEdit(title, todoTitle)}
+        >
+          ✓
+        </button>
+        <button
+          className="todo-rm-btn"
+          onClick={onRemove}
+        >
+          X
+        </button>
       </div>
     </div>
   );

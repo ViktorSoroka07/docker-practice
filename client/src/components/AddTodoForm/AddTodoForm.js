@@ -23,7 +23,7 @@ const AddTodoFormComponent = ({ addTodo }) => {
       method: 'POST',
       body: JSON.stringify({ title }),
       headers: { 'Content-Type': 'application/json' },
-    }).then(response => response.json());
+    });
   };
 
   return (

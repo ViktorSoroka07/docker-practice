@@ -13,17 +13,19 @@ export const ShowTodoItem = ({
     >
       {title}
     </div>
-    <div
-      className="todo-rm-btn"
-      onClick={onRemove}
-    >
-      X
-    </div>
-    <div
-      className="todo-edit-btn start"
-      onClick={onEdit}
-    >
-      ✎
+    <div>
+      <button
+        className="todo-edit-btn start"
+        onClick={onEdit}
+      >
+        ✎
+      </button>
+      <button
+        className="todo-rm-btn"
+        onClick={onRemove}
+      >
+        X
+      </button>
     </div>
   </div>
 );
