@@ -1,28 +1,48 @@
-import React, {PropTypes, Component} from 'react'
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { v4 } from 'uuid';
 
-class AddTodoForm extends Component {
-  render() {
-    let title = ''
-    const {store} = this.context
-    const state = store.getState()
-    return (
-      <div className="todo-add-form">
-        <form onSubmit={e => {
-          e.preventDefault()
-          this.props.onAdd(title.value)
-          title.value = ''
-        }}>
-          <input placeholder="Add todo here..."
-                 ref={input => title = input}/>
-          <button>Add Todo</button>
-        </form>
-      </div>
-    )
-  }
-}
+import { addTodoAction } from '../../redux/actions';
 
-AddTodoForm.contextTypes = {
-  store: PropTypes.object
-}
+const AddTodoFormComponent = ({ addTodo }) => {
+  const [title, setTitle] = useState('');
 
-export default AddTodoForm
+  const onSubmit = e => {
+    e.preventDefault();
+    const id = v4();
+
+    addTodo({
+      id,
+      title,
+    });
+
+    setTitle('');
+
+    fetch('/api/todos', {
+      method: 'POST',
+      body: JSON.stringify({ title }),
+      headers: { 'Content-Type': 'application/json' },
+    }).then(response => response.json());
+  };
+
+  return (
+    <div className="todo-add-form">
+      <form onSubmit={onSubmit}>
+        <input
+          placeholder="Add todo here..."
+          value={title}
+          onChange={e => setTitle(e.target.value)}
+        />
+        <button type="submit">Add Todo</button>
+      </form>
+    </div>
+  );
+};
+
+AddTodoFormComponent.propTypes = { addTodo: PropTypes.func.isRequired };
+
+export const AddTodoForm = connect(
+  null,
+  dispatch => ({ addTodo: props => dispatch(addTodoAction(props)) }),
+)(AddTodoFormComponent);
