@@ -78,6 +78,7 @@
     ],
     "prefer-object-spread": "off",
     "no-console": "off",
+    "no-confusing-arrow": "off",
     "arrow-body-style": "off",
     "camelcase": [
       "error",

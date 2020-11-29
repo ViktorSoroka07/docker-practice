@@ -12,11 +12,14 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.5",
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.17",
     "passport": "^0.4.1",
     "passport-http": "^0.3.0",
+    "passport-jwt": "^4.0.0",
     "uuid": "^3.1.0"
   },
   "devDependencies": {
