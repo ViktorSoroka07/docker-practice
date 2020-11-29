@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt-nodejs');
 const jwt = require('jsonwebtoken');
 const { BasicStrategy } = require('passport-http');
 const JwtStrategy = require('passport-jwt').Strategy;
+const GoogleStrategy = require('passport-google-oauth2').Strategy;
 
 const { findByUserName } = require('./users');
 const Todo = require('./db.js');
@@ -43,6 +44,37 @@ passport.use(new JwtStrategy(
     return done(null, user);
   }),
 ));
+
+passport.use(new GoogleStrategy({
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  callbackURL: process.env.GOOGLE_CLIENT_CALLBACKURL,
+},
+((accessToken, refreshToken, profile, done) => {
+  console.log(profile);
+  const user = findByUserName(profile.emails[0].value);
+
+  if (!user) {
+    return done(null, false);
+  }
+
+  return done(null, user);
+})));
+
+router.get('/auth/google',
+  passport.authenticate('google', {
+    scope: ['email', 'profile'],
+    session: false,
+  }));
+
+router.get('/auth/google/callback',
+  passport.authenticate('google', { session: false }),
+  (req, res) => {
+    const payload = { userName: req.user.userName };
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: JWT_TTL });
+
+    return res.cookie('jwt', token, { httpOnly: false, secure: false }).sendStatus(200);
+  });
 
 router.post('/login',
   passport.authenticate('basic', { session: false }),

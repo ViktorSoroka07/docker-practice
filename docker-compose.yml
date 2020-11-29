@@ -6,6 +6,8 @@ services:
       context: ./server
     env_file:
       - ./.env
+    environment:
+      - GOOGLE_CLIENT_CALLBACKURL=https://localhost/api/auth/google/callback
     depends_on:
       - mongodb
 

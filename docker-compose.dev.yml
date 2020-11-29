@@ -6,6 +6,8 @@ services:
       context: ./server
     env_file:
       - ./.env
+    environment:
+      - GOOGLE_CLIENT_CALLBACKURL=http://localhost:8000/api/auth/google/callback
     volumes:
       - /app/node_modules
       - ./server:/app
