@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const passport = require('passport');
+const session = require('express-session');
 
 const todoApi = require('./routes');
 
@@ -24,6 +26,10 @@ const logger = (req, res, next) => {
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(logger);
+app.use(session({ secret: 'secret' }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/api', todoApi);
 
 app.listen(process.env.PORT || 3000, () => {

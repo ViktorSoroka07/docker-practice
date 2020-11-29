@@ -25,8 +25,30 @@ passport.use(new BasicStrategy(
   }),
 ));
 
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
+
+passport.deserializeUser((user, done) => {
+  done(null, user);
+});
+
+function isAuthenticated(req, res, next) {
+  if (!req.isAuthenticated()) {
+    return res.sendStatus(401);
+  }
+
+  next();
+}
+
+router.post('/login',
+  passport.authenticate('basic', { session: true }),
+  (req, res) => {
+    res.send(200);
+  });
+
 router.get('/todos',
-  passport.authenticate('basic', { session: false }),
+  isAuthenticated,
   (req, res) => {
     Todo.find({}, (err, allTodos) => {
       if (err) return res.sendStatus(404).send(err);
@@ -36,7 +58,7 @@ router.get('/todos',
   });
 
 router.post('/todos',
-  passport.authenticate('basic', { session: false }),
+  isAuthenticated,
   (req, res) => {
     const newTodo = new Todo({
       id: uuid.v4(),
@@ -52,7 +74,7 @@ router.post('/todos',
   });
 
 router.put('/todos/:id',
-  passport.authenticate('basic', { session: false }),
+  isAuthenticated,
   (req, res) => {
     Todo.findOne({ id: req.params.id }, (errFind, todo) => {
       if (errFind || !todo) {
@@ -79,7 +101,7 @@ router.put('/todos/:id',
   });
 
 router.delete('/todos/:id',
-  passport.authenticate('basic', { session: false }),
+  isAuthenticated,
   (req, res) => {
     Todo.findOne({ id: req.params.id }, (errFind, todo) => {
       if (errFind) return res.status(404).send(errFind);
